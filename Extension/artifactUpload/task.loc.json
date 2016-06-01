@@ -1,0 +1,100 @@
+{
+  "id": "f5ac18e5-ebe2-44f5-b3f3-def849ba8144",
+  "name": "nexusArtifactUpload",
+  "friendlyName": "ms-resource:loc.friendlyName",
+  "description": "ms-resource:loc.description",
+  "helpMarkDown": "ms-resource:loc.helpMarkDown",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "author": "Microsoft",
+  "demands": [],
+  "version": {
+    "Major": 0,
+    "Minor": 1,
+    "Patch": 0
+  },
+  "instanceNameFormat": "ms-resource:loc.instanceNameFormat",
+  "inputs": [
+    {
+      "name": "serverEndpoint",
+      "type": "connectedService:Generic",
+      "label": "ms-resource:loc.input.label.serverEndpoint",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.serverEndpoint"
+    },
+    {
+      "name": "repositoryId",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.repositoryId",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.repositoryId"
+    },
+    {
+      "name": "groupId",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.groupId",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.groupId"
+    },
+    {
+      "name": "artifactId",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.artifactId",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.artifactId"
+    },
+    {
+      "name": "artifactVersion",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.artifactVersion",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.artifactVersion"
+    },
+    {
+      "name": "packaging",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.packaging",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.packaging"
+    },
+    {
+      "name": "fileName",
+      "type": "filePath",
+      "label": "ms-resource:loc.input.label.fileName",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "ms-resource:loc.input.help.fileName"
+    },
+    {
+      "name": "classifier",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.classifier",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "ms-resource:loc.input.help.classifier"
+    },
+    {
+      "name": "extension",
+      "type": "string",
+      "label": "ms-resource:loc.input.label.extension",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "ms-resource:loc.input.help.extension"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "NexusTask.js",
+      "argumentFormat": ""
+    }
+  }
+}

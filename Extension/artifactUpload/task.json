@@ -1,0 +1,100 @@
+{
+    "id": "f5ac18e5-ebe2-44f5-b3f3-def849ba8144",
+    "name": "nexusArtifactUpload",
+    "friendlyName": "Nexus Artifact Upload",
+    "description": "Upload artifacts to a Sonatype Nexus server.",
+    "helpMarkDown": "Upload artifacts to a [Sonatype Nexus server](http://www.sonatype.org/nexus/)",
+    "category": "Deploy",
+    "visibility": [
+        "Build",
+        "Release"
+    ],
+    "author": "Microsoft",
+    "demands": [],
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Nexus Artifact Upload",
+    "inputs": [
+      {
+        "name": "serverEndpoint",
+        "type": "connectedService:Generic",
+        "label": "Sonatype Nexus service endpoint",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Select the service endpoint for your Nexus instance.  To create one, click the Manage link and create a new Generic Service Endpoint, enter the Nexus server URL for the server URL, e.g. http://nexusserver.example.com:8080, and required credentials."
+      },     
+      {
+        "name": "repositoryId",
+        "type": "string",
+        "label": "Repository Id",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The Nexus Repository Id"
+      },
+      {
+        "name": "groupId",
+        "type": "string",
+        "label": "Group Id",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The Nexus Group Id.  Only letters, numbers, underscore(_), hyphon(-), and dot(.) are allowed."
+      },
+      {
+        "name": "artifactId",
+        "type": "string",
+        "label": "Artifact Id",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The Nexus Artifact Id.  Only letters, numbers, underscore(_), hyphon(-), and dot(.) are allowed."
+      },
+      {
+        "name": "artifactVersion",
+        "type": "string",
+        "label": "Artifact Version",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The Nexus Artifact Version.  Only letters, numbers, underscore(_), hyphon(-), and dot(.) are allowed."
+      },
+      {
+        "name": "packaging",
+        "type": "string",
+        "label": "Packaging",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The Nexus Packaging type"
+      },
+      {
+        "name": "fileName",
+        "type": "filePath",
+        "label": "File",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "The file to upload"
+      },
+      {
+        "name": "classifier",
+        "type": "string",
+        "label": "Classifier",
+        "defaultValue": "",
+        "required": false,
+        "helpMarkDown": "The Nexus Classifier of the file to upload. If empty, no classifier will be appended to the file."
+      },
+      {
+        "name": "extension",
+        "type": "string",
+        "label": "Extension",
+        "defaultValue": "",
+        "required": false,
+        "helpMarkDown": "The file extension of the file to upload. If empty, the default file extension (derived from the packaging type) will be used."
+      }
+    ],
+    "execution": {
+        "Node": {
+            "target": "NexusTask.js",
+            "argumentFormat": ""
+        }
+    }
+}
