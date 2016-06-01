@@ -2,8 +2,8 @@
     "id": "f5ac18e5-ebe2-44f5-b3f3-def849ba8144",
     "name": "nexusArtifactUpload",
     "friendlyName": "Nexus Artifact Upload",
-    "description": "Upload artifacts to a Sonatype Nexus server.",
-    "helpMarkDown": "Upload artifacts to a [Sonatype Nexus server](http://www.sonatype.org/nexus/)",
+    "description": "Upload artifacts to Sonatype Nexus.",
+    "helpMarkDown": "Upload artifacts to [Sonatype Nexus](http://www.sonatype.org/nexus/)",
     "category": "Deploy",
     "visibility": [
         "Build",
@@ -64,7 +64,7 @@
         "label": "Packaging",
         "defaultValue": "",
         "required": true,
-        "helpMarkDown": "The Nexus Packaging type"
+        "helpMarkDown": "The Nexus Packaging type: pom, jar, ejb, war, ear, rar, par, maven-archetype, or maven-plugin."
       },
       {
         "name": "fileName",
