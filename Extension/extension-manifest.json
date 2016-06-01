@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "nexus-build-extension",
     "name": "Integrate with Sonatype Nexus",
-    "version": "0.1.1",
+    "version": "0.1.0",
     "publisher": "ms-vsts",
     "description": "Upload your VSTS/TFS artifacts to your Sonatype Nexus instance during your build using this build extension.",
     "public": true,

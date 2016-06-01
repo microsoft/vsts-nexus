@@ -10,6 +10,7 @@ Create a Generic Service Endpoint and specify your Sonatype Nexus endpoint URL, 
 Create a build definition to automate your build process. For detailed instructions on setting up a build definition, check out [this](https://msdn.microsoft.com/library/vs/alm/build/define/create).
 
 Add the Sonatype Nexus Artifact Upload Build task to your build steps.
+
 ![Sonatype Nexus Artifact Upload Build Task](images/buildTask.png)
 
 Specify the input arguments.
