@@ -1,6 +1,6 @@
 {
   "name": "vsts.nexus",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Visual Studio Team Services extension for Sonatype Nexus",
   "main": "gulpfile.js",
   "directories": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/vsts-urbancode-deploy"
+    "url": "https://github.com/Microsoft/vsts-nexus"
   },
   "keywords": [
     "VSTS",

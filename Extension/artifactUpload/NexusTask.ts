@@ -51,7 +51,14 @@ tl.debug('nexusUploadUrl=' + nexusUploadUrl);
 request.post({ url: nexusUploadUrl, formData: formData }, function optionalCallback(err, httpResponse, body) {
     if (err) {
         tl.setResult(tl.TaskResult.Failed, err);
-    }
-    tl.debug('Upload successful, server responded with: ' + body);
-    tl.setResult(tl.TaskResult.Succeeded, 'Successfully uploaded ' + fileName);
+    } else if (httpResponse.statusCode != 201){
+        var message ='Upload failed.\nHttpResponse.statusCode='+httpResponse.statusCode+
+            '\nHttpResponse.statusMessage='+httpResponse.statusMessage+
+            '\nhttpResponse.body='+httpResponse.body 
+        tl.debug(message);
+        tl.setResult(tl.TaskResult.Failed, message); 
+    } else {
+      tl.debug('Upload successful, server responded with: ' + body);
+      tl.setResult(tl.TaskResult.Succeeded, 'Successfully uploaded ' + fileName);  
+    } 
 }).auth(username, password, true);
