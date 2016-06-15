@@ -89,6 +89,14 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "ms-resource:loc.input.help.extension"
+    },
+    {
+      "name": "trustSSL",
+      "type": "boolean",
+      "label": "ms-resource:loc.input.label.extension",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "ms-resource:loc.input.help.extension"
     }
   ],
   "execution": {
