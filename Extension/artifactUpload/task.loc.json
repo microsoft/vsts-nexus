@@ -93,10 +93,10 @@
     {
       "name": "trustSSL",
       "type": "boolean",
-      "label": "ms-resource:loc.input.label.extension",
+      "label": "ms-resource:loc.input.label.trustSSL",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "ms-resource:loc.input.help.extension"
+      "helpMarkDown": "ms-resource:loc.input.help.trustSSL"
     }
   ],
   "execution": {

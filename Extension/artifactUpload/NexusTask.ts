@@ -19,6 +19,7 @@ var packaging = tl.getInput('packaging');
 var fileName = tl.getInput('fileName');
 var classifier = tl.getInput('classifier');
 var extension = tl.getInput('extension');
+var trustSSL = tl.getInput('trustSSL');
 
 if (!extension) {
     tl.debug('extension not specified, using default packaging extension');
@@ -48,7 +49,7 @@ var password = serverEndpointAuth['parameters']['password'];
 var nexusUploadUrl = serverEndpointUrl + '/service/local/artifact/maven/content';
 tl.debug('nexusUploadUrl=' + nexusUploadUrl);
 
-request.post({ url: nexusUploadUrl, formData: formData }, function optionalCallback(err, httpResponse, body) {
+request.post({ url: nexusUploadUrl, formData: formData, strictSSL: !trustSSL }, function optionalCallback(err, httpResponse, body) {
     if (err) {
         tl.setResult(tl.TaskResult.Failed, err);
     } else if (httpResponse.statusCode != 201){

@@ -89,6 +89,14 @@
         "defaultValue": "",
         "required": false,
         "helpMarkDown": "The file extension of the file to upload. If empty, the default file extension (derived from the packaging type) will be used."
+      },
+      {
+        "name": "trustSSL",
+        "type": "boolean",
+        "label": "Trust Server Certificate",
+        "defaultValue": "false",
+        "required": false,
+        "helpMarkDown": "Trust Nexus Server certificate (usefull in case of self signed certificate present on Nexus)"
       }
     ],
     "execution": {
