@@ -282,6 +282,11 @@ function packageTask(pkgPath, commonDeps, commonSrc){
                         "src": "node_modules",
                         "dest": "node_modules"
                     });
+					libDeps.push({
+                        "name": "request",
+                        "src": "node_modules",
+                        "dest": "node_modules"
+                    });
                 }
 
                 if (task.execution['PowerShell3']) {

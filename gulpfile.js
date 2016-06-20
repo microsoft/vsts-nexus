@@ -49,6 +49,7 @@ gulp.task('clean', function (cb) {
 gulp.task('compileTasks', ['clean'], function (cb) {
     try {
         getNpmExternal('vsts-task-lib');
+        getNpmExternal('request');
     }
     catch (err) {
         console.log('error:' + err.message);
@@ -63,7 +64,7 @@ gulp.task('compileTasks', ['clean'], function (cb) {
 });
 
 gulp.task('copyMdFiles', function(cb) {
-    return gulp.src(path.join(__dirName, '*.md'))
+    return gulp.src(path.join(__dirname, '*.md'))
     .pipe(gulp.dest(path.join(__dirname)));
 })
 

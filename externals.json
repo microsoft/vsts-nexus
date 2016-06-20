@@ -1,3 +1,4 @@
 {
-    "vsts-task-lib":"0.7.0"
+    "vsts-task-lib":"0.7.0",
+    "request": "^2.72.0"
 }
