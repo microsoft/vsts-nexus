@@ -14,7 +14,7 @@
     "version": {
         "Major": 0,
         "Minor": 1,
-        "Patch": 2
+        "Patch": 3
     },
     "instanceNameFormat": "Nexus Artifact Upload",
     "inputs": [
@@ -89,6 +89,14 @@
         "defaultValue": "",
         "required": false,
         "helpMarkDown": "The file extension of the file to upload. If empty, the default file extension (derived from the packaging type) will be used."
+      },
+      {
+        "name": "trustSSL",
+        "type": "boolean",
+        "label": "Trust Server Certificate",
+        "defaultValue": "false",
+        "required": false,
+        "helpMarkDown": "Selecting this option results in the Nexus Server's SSL certificate being trusted even if it is self-signed or cannot be validated by a Certificate Authority (CA)."
       }
     ],
     "execution": {

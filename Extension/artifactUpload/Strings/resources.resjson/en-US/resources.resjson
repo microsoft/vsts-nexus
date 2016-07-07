@@ -20,5 +20,7 @@
   "loc.input.label.classifier": "Classifier",
   "loc.input.help.classifier": "The Nexus Classifier of the file to upload. If empty, no classifier will be appended to the file.",
   "loc.input.label.extension": "Extension",
-  "loc.input.help.extension": "The file extension of the file to upload. If empty, the default file extension (derived from the packaging type) will be used."
+  "loc.input.help.extension": "The file extension of the file to upload. If empty, the default file extension (derived from the packaging type) will be used.",
+  "loc.input.label.trustSSL": "Trust Server Certificate",
+  "loc.input.help.trustSSL": "Trust Nexus Server certificate (usefull in case of self signed certificate present on Nexus)"
 }
