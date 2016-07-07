@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "nexus-build-extension",
     "name": "Integrate with Sonatype Nexus",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "publisher": "ms-vsts",
     "description": "Upload TFS/Team Services artifacts to Sonatype Nexus.",
     "public": true,
