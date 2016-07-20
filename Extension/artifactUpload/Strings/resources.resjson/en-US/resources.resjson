@@ -1,7 +1,7 @@
 {
   "loc.friendlyName": "Nexus Artifact Upload",
   "loc.helpMarkDown": "Upload artifacts to [Sonatype Nexus](http://www.sonatype.org/nexus/)",
-  "loc.description": "Upload artifacts to Sonatype Nexus.",
+  "loc.description": "Upload artifacts to Sonatype Nexus",
   "loc.instanceNameFormat": "Nexus Artifact Upload",
   "loc.input.label.serverEndpoint": "Sonatype Nexus service endpoint",
   "loc.input.help.serverEndpoint": "Select the service endpoint for your Nexus instance.  To create one, click the Manage link and create a new Generic Service Endpoint, enter the Nexus server URL for the server URL, e.g. http://nexusserver.example.com:8080, and required credentials.",
@@ -22,5 +22,5 @@
   "loc.input.label.extension": "Extension",
   "loc.input.help.extension": "The file extension of the file to upload. If empty, the default file extension (derived from the packaging type) will be used.",
   "loc.input.label.trustSSL": "Trust Server Certificate",
-  "loc.input.help.trustSSL": "Trust Nexus Server certificate (usefull in case of self signed certificate present on Nexus)"
+  "loc.input.help.trustSSL": "Selecting this option results in the Nexus Server's SSL certificate being trusted even if it is self-signed or cannot be validated by a Certificate Authority (CA)."
 }
