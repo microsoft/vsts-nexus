@@ -1,6 +1,6 @@
 {
   "name": "vsts.nexus",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Visual Studio Team Services extension for Sonatype Nexus",
   "main": "gulpfile.js",
   "directories": {
@@ -46,7 +46,7 @@
     "process": "^0.10.1",
     "q": "^1.2.0",
     "request": "^2.72.0",
-    "vsts-task-lib": "^0.5.10",
+    "vsts-task-lib": "^0.7.0",
     "tfx-cli": "^0.3.12"
   }
 }

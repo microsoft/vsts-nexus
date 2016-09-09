@@ -7,24 +7,41 @@
 import tl = require('vsts-task-lib/task');
 import fs = require('fs');
 
+import * as Util from './util';
+
 // node js modules
 var request = require('request');
 
+//server & auth
 var serverEndpoint = tl.getInput('serverEndpoint', true);
-var repositoryId = tl.getInput('repositoryId');
-var groupId = tl.getInput('groupId');
-var artifactId = tl.getInput('artifactId');
-var artifactVersion = tl.getInput('artifactVersion');
-var packaging = tl.getInput('packaging');
-var fileName = tl.getInput('fileName');
-var classifier = tl.getInput('classifier');
-var extension = tl.getInput('extension');
-var trustSSL = tl.getInput('trustSSL');
+var serverEndpointUrl = tl.getEndpointUrl(serverEndpoint, false);
+tl.debug('serverEndpointUrl=' + serverEndpointUrl);
+var serverEndpointAuth = tl.getEndpointAuthorization(serverEndpoint, false);
+var username = serverEndpointAuth['parameters']['username'];
+var password = serverEndpointAuth['parameters']['password'];
 
+var nexusUploadUrl = Util.addUrlSegment(serverEndpointUrl, 'service/local/artifact/maven/content');
+tl.debug('nexusUploadUrl=' + nexusUploadUrl);
+
+
+//other options
+var repositoryId = tl.getInput('repositoryId', true);
+var groupId = tl.getInput('groupId', true);
+var artifactId = tl.getInput('artifactId', true);
+var artifactVersion = tl.getInput('artifactVersion', true);
+var packaging = tl.getInput('packaging', true);
+var fileName = tl.getInput('fileName', true);
+var classifier = tl.getInput('classifier', false);
+if (!classifier) {
+    tl.debug('classifier not specified');
+    classifier = '';
+}
+var extension = tl.getInput('extension', false);
 if (!extension) {
     tl.debug('extension not specified, using default packaging extension');
     extension = packaging;
 }
+var trustSSL = tl.getInput('trustSSL', true);
 
 var formData = {
     // Pass a simple key-value pair
@@ -39,27 +56,25 @@ var formData = {
     my_file: fs.createReadStream(fileName)
 };
 
-var serverEndpointUrl = tl.getEndpointUrl(serverEndpoint, false);
-tl.debug('serverEndpointUrl=' + serverEndpointUrl);
+var postData: any = { url: nexusUploadUrl, formData: formData, strictSSL: !trustSSL };
 
-var serverEndpointAuth = tl.getEndpointAuthorization(serverEndpoint, false);
-var username = serverEndpointAuth['parameters']['username'];
-var password = serverEndpointAuth['parameters']['password'];
-
-var nexusUploadUrl = serverEndpointUrl + '/service/local/artifact/maven/content';
-tl.debug('nexusUploadUrl=' + nexusUploadUrl);
-
-request.post({ url: nexusUploadUrl, formData: formData, strictSSL: !trustSSL }, function optionalCallback(err, httpResponse, body) {
-    if (err) {
+tl.debug('request.post(), postData: ' + JSON.stringify(postData));
+request.post(postData)
+    .auth(username, password, true)
+    .on('error', err => {
+        tl.error('Upload failed.');
+        tl.error(err);
         tl.setResult(tl.TaskResult.Failed, err);
-    } else if (httpResponse.statusCode != 201){
-        var message ='Upload failed.\nHttpResponse.statusCode='+httpResponse.statusCode+
-            '\nHttpResponse.statusMessage='+httpResponse.statusMessage+
-            '\nhttpResponse.body='+httpResponse.body 
-        tl.debug(message);
-        tl.setResult(tl.TaskResult.Failed, message); 
-    } else {
-      tl.debug('Upload successful, server responded with: ' + body);
-      tl.setResult(tl.TaskResult.Succeeded, 'Successfully uploaded ' + fileName);  
-    } 
-}).auth(username, password, true);
+    })
+    .on('response', response => {
+        tl.debug('response: ' + JSON.stringify(response));
+        if (response.statusCode == 201) {
+            var message = 'Successfully uploaded file: ' + fileName;
+            console.log(message);
+            tl.setResult(tl.TaskResult.Succeeded, message);
+        } else {
+            var message = 'Upload failed, HttpResponse.statusCode: ' + response.statusCode + ', HttpResponse.statusMessage: ' + response.statusMessage;
+            tl.error(message);
+            tl.setResult(tl.TaskResult.Failed, message);
+        }
+    });
