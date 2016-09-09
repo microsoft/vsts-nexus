@@ -1,6 +1,7 @@
 node_modules/
 _temp/
 .vscode
+.taskkey
 gulp-tsc-tmp-*
 .gulp-tsc-tmp-*
 
