@@ -1,5 +1,5 @@
 # Integrate with Sonatype Nexus
-This extension provides build tasks that enable you to integrate with [Sonatype Nexus](http://www.sonatype.org/nexus/).
+This extension provides build tasks that enable you to integrate with [Sonatype Nexus](http://www.sonatype.org/nexus/) 2.x. (Sonatype Nexus 3.x is not supported currently.)
 
 ## Create a Sonatype Nexus Connection
 Create a Generic Service Endpoint and specify your Sonatype Nexus endpoint URL, user name, and password.
