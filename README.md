@@ -27,7 +27,7 @@ The [code](https://github.com/Microsoft/vsts-urbancode-deploy) is open sourced u
 1. npm update
 1. gulp
 
-The vsix package will be produced in `_package`, and it can be uploaded to Visual Studio Team Services Marketplace for sharing.
+The vsix package will be produced in `_package`, and it can be uploaded to the Azure DevOps Marketplace for sharing.
 
 ## FAQ
 ### What if I need to work with Sonatype Nexus 3.x?
@@ -70,10 +70,10 @@ In the settings.xml file specify the credentials that Maven task will use to acc
 ```
 Note that the example uses Maven properties for user name and password credentials. 
 These properties can be set in the build task in the secure way using secret variables in your Build/Release.
-And here’s what the Maven task looks like in the VSTS build definition to run the ‘clean’ and ‘deploy’ goals of the pom.xml to do the deployment:
+And hereâ€™s what the Maven task looks like in the Azure Pipelines build definition to run the â€˜cleanâ€™ and â€˜deployâ€™ goals of the pom.xml to do the deployment:
 
 ![Maven Artifact Upload Build Task](Extension/images/mavenTask.png)
 
-`$(nexusUsername)` and `$(nexusPassword)` are secret VSTS build variables, which should be defined in the Variables section of the build definition:
+`$(nexusUsername)` and `$(nexusPassword)` are secret Azure Pipelines build variables, which should be defined in the Variables section of the build definition:
 
-![VSTS secret variables](Extension/images/secretVariables.png)
+![Azure Pipelines secret variables](Extension/images/secretVariables.png)
